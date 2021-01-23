@@ -1,0 +1,33 @@
+{
+    "name": "@daihy8759/protocol-check",
+    "version": "1.0.1",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "license": "MIT",
+    "files": [
+        "lib/",
+        "esm/"
+    ],
+    "keywords": [
+        "protocol-check",
+        "protocolcheck"
+    ],
+    "author": "daihy<dai85939260@163.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/daihy8759/protocolcheck"
+    },
+    "bugs": {
+        "url": "https://github.com/daihy8759/protocolcheck/issues"
+    },
+    "homepage": "https://github.com/daihy8759/protocolcheck#readme",
+    "scripts": {
+        "build:cjs": "tsc",
+        "build:es": "tsc -m esNext --outDir esm",
+        "build": "yarn build:cjs && yarn build:es",
+        "prepare": "yarn build"
+    },
+    "devDependencies": {
+        "typescript": "^4.1.3"
+    }
+}
