@@ -1,6 +1,6 @@
 {
     "name": "@daihy8759/protocol-check",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "main": "lib/index.js",
     "module": "esm/index.js",
     "license": "MIT",
@@ -15,19 +15,21 @@
     "author": "daihy<dai85939260@163.com>",
     "repository": {
         "type": "git",
-        "url": "https://github.com/daihy8759/protocolcheck"
+        "url": "https://github.com/daihy8759/protocol-check"
     },
     "bugs": {
-        "url": "https://github.com/daihy8759/protocolcheck/issues"
+        "url": "https://github.com/daihy8759/protocol-check/issues"
     },
-    "homepage": "https://github.com/daihy8759/protocolcheck#readme",
+    "homepage": "https://github.com/daihy8759/protocol-check#readme",
     "scripts": {
         "build:cjs": "tsc",
         "build:es": "tsc -m esNext --outDir esm",
         "build": "yarn build:cjs && yarn build:es",
-        "prepare": "yarn build"
+        "clean": "rimraf esm && rimraf lib",
+        "prepare": "yarn clean && yarn build"
     },
     "devDependencies": {
+        "rimraf": "^3.0.2",
         "typescript": "^4.1.3"
     }
 }
