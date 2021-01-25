@@ -1,4 +1,4 @@
-function _registerEvent(target, eventType, cb) {
+function _registerEvent(target: any, eventType: string, cb: Fn) {
     if (target.addEventListener) {
         target.addEventListener(eventType, cb);
         return {
@@ -16,7 +16,7 @@ function _registerEvent(target, eventType, cb) {
     }
 }
 
-function _createHiddenIframe(target, uri) {
+function _createHiddenIframe(target: HTMLElement, uri: string) {
     var iframe = document.createElement('iframe');
     iframe.src = uri;
     iframe.id = 'hiddenIframe';
@@ -26,7 +26,7 @@ function _createHiddenIframe(target, uri) {
     return iframe;
 }
 
-function openUriWithHiddenFrame(uri, failCb, successCb) {
+function openUriWithHiddenFrame(uri: string, failCb: Fn, successCb: Fn) {
     var timeout = setTimeout(function () {
         failCb();
         handler.remove();
@@ -48,7 +48,7 @@ function openUriWithHiddenFrame(uri, failCb, successCb) {
     iframe.contentWindow!.location.href = uri;
 }
 
-function openUriWithTimeoutHack(uri, failCb, successCb) {
+function openUriWithTimeoutHack(uri: string, failCb: Fn, successCb: Fn) {
     var timeout = setTimeout(function () {
         failCb();
         handler.remove();
@@ -67,10 +67,10 @@ function openUriWithTimeoutHack(uri, failCb, successCb) {
         successCb();
     }
 
-    window.location = uri;
+    window.location.href = uri;
 }
 
-function openUriUsingFirefox(uri, failCb, successCb) {
+function openUriUsingFirefox(uri: string, failCb: Fn, successCb: Fn) {
     var iframe = document.querySelector('#hiddenIframe') as HTMLIFrameElement;
 
     if (!iframe) {
@@ -87,7 +87,7 @@ function openUriUsingFirefox(uri, failCb, successCb) {
     }
 }
 
-function openUriUsingIEInOlderWindows(uri, failCb, successCb) {
+function openUriUsingIEInOlderWindows(uri: string, failCb: Fn, successCb: Fn) {
     if (getInternetExplorerVersion() === 10) {
         openUriUsingIE10InWindows7(uri, failCb, successCb);
     } else if (
@@ -100,7 +100,7 @@ function openUriUsingIEInOlderWindows(uri, failCb, successCb) {
     }
 }
 
-function openUriUsingIE10InWindows7(uri, failCb, successCb) {
+function openUriUsingIE10InWindows7(uri: string, failCb: Fn, successCb: Fn) {
     var timeout = setTimeout(failCb, 1000);
     window.addEventListener('blur', function () {
         clearTimeout(timeout);
@@ -140,7 +140,7 @@ function openUriInNewWindowHack(uri: string, failCb?: Fn, successCb?: Fn) {
     }, 1000);
 }
 
-function openUriWithMsLaunchUri(uri, failCb, successCb) {
+function openUriWithMsLaunchUri(uri: string, failCb: Fn, successCb: Fn) {
     navigator.msLaunchUri(uri, successCb, failCb);
 }
 
@@ -182,14 +182,14 @@ function getInternetExplorerVersion() {
     return rv;
 }
 
-function isFunction(value) {
+function isFunction(value: any) {
     return typeof value === 'function';
 }
 
 export default function protocolCheck(
     uri: string,
-    failCb?: Fn,
-    successCb?: Fn,
+    failCb: Fn,
+    successCb: Fn,
     unsupportedCb?: Fn
 ) {
     function failCallback() {
