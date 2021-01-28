@@ -160,7 +160,9 @@ function checkBrowser() {
         isIOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
         // @ts-ignore
         isChrome: !!window.chrome && !isOpera,
-        isIE: ua.indexOf('IE') != -1,
+        isIE:
+            (ua.indexOf('msie') != -1 || ua.indexOf('trident') != -1) &&
+            !isOpera,
     };
 }
 
