@@ -1,6 +1,6 @@
 {
     "name": "@daihy8759/protocol-check",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "main": "lib/index.js",
     "module": "esm/index.js",
     "license": "MIT",
